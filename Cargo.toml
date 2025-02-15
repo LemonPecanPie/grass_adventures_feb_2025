@@ -1,0 +1,7 @@
+[package]
+name = "grass_adventures_feb_2025"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+macroquad = "0.4.13"

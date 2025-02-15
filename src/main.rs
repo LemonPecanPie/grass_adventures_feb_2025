@@ -1,4 +1,5 @@
 use macroquad::prelude::*;
+use rust_translate::translate_from_english;
 
 #[macroquad::main("Super Grass Adventures!")]
 async fn main() {
@@ -6,6 +7,7 @@ async fn main() {
     let mut y = screen_height() / 2.0;
     let seed = get_time();
     rand::srand(seed as u64);
+    let text: &str;
     loop {
         clear_background(LIGHTGRAY);
 
@@ -25,6 +27,8 @@ async fn main() {
             y -= 1.0;
         }
 
+        text = translate_from_english("hello", "in").unwrap();
+
         draw_circle(x, y, 15.0, YELLOW);
         draw_text("move the ball with arrow keys", 20.0, 20.0, 20.0, DARKGRAY);
         draw_text(
@@ -34,6 +38,13 @@ async fn main() {
             30.0,
             DARKGREEN,
         );
+        dt(text);
+        
         next_frame().await
     }
+}
+
+
+fn dt(text: &str) {
+    draw_text(text, 20.0, 100.0, 30.0, DARKBLUE);
 }

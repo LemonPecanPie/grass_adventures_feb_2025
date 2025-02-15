@@ -4,6 +4,8 @@ use macroquad::prelude::*;
 async fn main() {
     let mut x = screen_width() / 2.0;
     let mut y = screen_height() / 2.0;
+    let seed = get_time();
+    rand::srand(seed as u64);
     loop {
         clear_background(LIGHTGRAY);
 
@@ -26,11 +28,11 @@ async fn main() {
         draw_circle(x, y, 15.0, YELLOW);
         draw_text("move the ball with arrow keys", 20.0, 20.0, 20.0, DARKGRAY);
         draw_text(
-            &format!("time elapsed: {}", get_time())[..],
+            &format!{"random number: {}", rand::rand()}[..],
             20.0,
             50.0,
             30.0,
-            SKYBLUE,
+            DARKGREEN,
         );
         next_frame().await
     }

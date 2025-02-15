@@ -1,6 +1,5 @@
 use macroquad::prelude::*;
 
-
 #[macroquad::main("Super Grass Adventures!")]
 async fn main() {
     let mut x = screen_width() / 2.0;
@@ -24,11 +23,15 @@ async fn main() {
             y -= 1.0;
         }
 
-        
-
-        
         draw_circle(x, y, 15.0, YELLOW);
         draw_text("move the ball with arrow keys", 20.0, 20.0, 20.0, DARKGRAY);
+        draw_text(
+            &format!("time elapsed: {}", get_time())[..],
+            20.0,
+            50.0,
+            30.0,
+            SKYBLUE,
+        );
         next_frame().await
     }
 }
